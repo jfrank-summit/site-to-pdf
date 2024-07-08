@@ -2,16 +2,23 @@
     "name": "ts-node-template",
     "version": "0.0.2",
     "scripts": {
-        "start": "ts-node ./src/index.ts",
-        "lint": "eslint './**/*.{js,ts}' --quiet --fix",
-        "format": "prettier --write './**/*.{js,ts,json}'"
+        "start": "ts-node src/index.ts",
+        "build": "tsc",
+        "lint": "eslint './src/**/*.ts' --quiet --fix",
+        "format": "prettier --write './src/**/*.{js,ts,json}'"
     },
     "dependencies": {
+        "axios": "^1.7.2",
+        "pdf-lib": "^1.17.1",
+        "puppeteer": "^22.12.1",
         "ts-node": "^10.9.2",
-        "tslib": "^2.6.3"
+        "tslib": "^2.6.3",
+        "xml2js": "^0.6.2"
     },
     "devDependencies": {
         "@types/node": "^20.14.10",
+        "@types/puppeteer": "^7.0.4",
+        "@types/xml2js": "^0.4.14",
         "@typescript-eslint/eslint-plugin": "^7.16.0",
         "@typescript-eslint/parser": "^7.16.0",
         "eslint": "^9.6.0",

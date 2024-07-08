@@ -1,5 +1,7 @@
+import { crawlAndCreatePDF } from './sitemapper';
 const main = async () => {
-    console.log('hello world');
+    const sitemapURL = 'https://example.com/sitemap.xml';
+    await crawlAndCreatePDF(sitemapURL);
 };
 
 main().catch(console.error);
