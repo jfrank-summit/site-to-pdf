@@ -2,6 +2,7 @@ import axios from 'axios';
 import xml2js from 'xml2js';
 import puppeteer from 'puppeteer';
 import fs from 'fs';
+import path from 'path';
 import { PDFDocument } from 'pdf-lib';
 
 interface SitemapURL {
@@ -14,7 +15,10 @@ interface Sitemap {
     };
 }
 
-export async function crawlAndCreatePDF(sitemapURL: string): Promise<void> {
+export async function crawlAndCreatePDF(
+    sitemapURL: string,
+    pdfName: string
+): Promise<void> {
     try {
         // Fetch the sitemap
         const response = await axios.get(sitemapURL);
@@ -57,11 +61,18 @@ export async function crawlAndCreatePDF(sitemapURL: string): Promise<void> {
 
         await browser.close();
 
-        // Save the merged PDF
-        const pdfBytes = await mergedPdf.save();
-        fs.writeFileSync('merged_site.pdf', pdfBytes);
+        // Create the pdfs directory if it doesn't exist
+        const pdfDir = path.join(process.cwd(), 'pdfs');
+        if (!fs.existsSync(pdfDir)) {
+            fs.mkdirSync(pdfDir);
+        }
 
-        console.log('PDF creation complete: merged_site.pdf');
+        // Save the merged PDF in the pdfs directory
+        const pdfBytes = await mergedPdf.save();
+        const pdfPath = path.join(pdfDir, `${pdfName}.pdf`);
+        fs.writeFileSync(pdfPath, pdfBytes);
+
+        console.log(`PDF creation complete: ${pdfPath}`);
     } catch (error) {
         console.error('An error occurred:', error);
     }
