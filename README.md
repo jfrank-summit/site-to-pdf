@@ -6,13 +6,31 @@ This application crawls a sitemap and generates a PDF containing all the pages l
 
 -   Node.js (version 14 or higher recommended)
 -   Yarn package manager
+-   Required system libraries (for Linux users):
+
+    ```bash
+    sudo apt-get update && sudo apt-get install -y \
+        libasound2 \
+        libatk1.0-0 \
+        libatk-bridge2.0-0 \
+        libcups2 \
+        libdrm2 \
+        libgbm1 \
+        libnss3 \
+        libpango-1.0-0 \
+        libxcomposite1 \
+        libxdamage1 \
+        libxfixes3 \
+        libxrandr2 \
+        libxshmfence1
+    ```
 
 ## Installation
 
 1. Clone this repository:
 
     ```
-    git clone https://github.com/your-username/sitemap-to-pdf-crawler.git
+    git clone https://github.com/jfrank-summit/sitemap-to-pdf-crawler.git
     cd sitemap-to-pdf-crawler
     ```
 
