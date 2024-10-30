@@ -1,14 +1,20 @@
-import { crawlAndCreatePDF } from './sitemapper';
+import { crawlAndCreateOutput, OutputFormat } from './sitemapper';
 
 const main = async () => {
-    const [sitemapURL, pdfName] = process.argv.slice(2);
+    const [sitemapURL, outputName, format = 'pdf'] = process.argv.slice(2);
 
-    if (!sitemapURL || !pdfName) {
-        console.error('Usage: yarn start <sitemap_url> <pdf_name>');
+    if (!sitemapURL || !outputName) {
+        console.error('Usage: yarn start <sitemap_url> <output_name> [format]');
+        console.error('Available formats: pdf, txt, md (default: pdf)');
         process.exit(1);
     }
 
-    await crawlAndCreatePDF(sitemapURL, pdfName);
+    if (!['pdf', 'txt', 'md'].includes(format)) {
+        console.error('Invalid format. Available formats: pdf, txt, md');
+        process.exit(1);
+    }
+
+    await crawlAndCreateOutput(sitemapURL, outputName, format as OutputFormat);
 };
 
 main().catch(console.error);

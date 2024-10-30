@@ -13,7 +13,9 @@
         "puppeteer": "^22.12.1",
         "ts-node": "^10.9.2",
         "tslib": "^2.6.3",
-        "xml2js": "^0.6.2"
+        "xml2js": "^0.6.2",
+        "marked": "^12.0.0",
+        "turndown": "^7.1.2"
     },
     "devDependencies": {
         "@types/node": "^20.14.10",
@@ -25,6 +27,8 @@
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.1.3",
         "prettier": "^3.3.2",
-        "typescript": "^5.5.3"
+        "typescript": "^5.5.3",
+        "@types/marked": "^6.0.0",
+        "@types/turndown": "^5.0.4"
     }
 }
